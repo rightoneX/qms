@@ -1,0 +1,24 @@
+system prune --all
+docker stop $(docker ps -a -q)
+
+npm install -g sequelize-cli
+
+sequelize model:create --name user --attributes email:string,password:string,firstName:string,lastName:string
+
+sequelize db:seed:all
+
+sequelize seed:generate --name demo-user
+
+sequelize db:create
+
+sequelize db:migrate
+
+# install ORM , CLI and SQLite dialect
+npm install --save sequelize sequelize-cli sqlite3
+
+# generate models
+node_modules/.bin/sequelize init
+
+
+
+https://www.djamware.com/post/5b56a6cc80aca707dd4f65a9/nodejs-expressjs-sequelizejs-and-postgresql-restful-api

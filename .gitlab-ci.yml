@@ -1,0 +1,49 @@
+image: docker:latest
+
+services:
+  - docker:dind
+
+before_script:
+  - apk update
+  - apk add py-pip
+  - pip install docker-compose
+  - docker --version
+  - docker-compose --version
+  - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+
+build-database-dev:
+  stage: build
+  script:
+    - docker-compose pull db
+    - docker tag postgres $CI_REGISTRY_IMAGE/postgres:dev
+    - docker push $CI_REGISTRY_IMAGE/postgres:dev
+  when: manual
+  only:
+    - development
+
+deploy-database-dev:
+  stage: deploy
+  script: echo deploying to dev...
+  when: manual
+  environment:
+    name: dev
+
+build-auth-service-dev:
+  stage: build
+  script:
+    - docker-compose build auth-service
+    - docker tag auth-service $CI_REGISTRY_IMAGE/auth-service:$CI_COMMIT_SHA
+    - docker push $CI_REGISTRY_IMAGE/auth-service:$CI_COMMIT_SHA
+  when: manual
+  only:
+    - development
+
+deploy-auth-service-dev:
+  stage: deploy
+  script:
+    - echo deploying to dev...
+    - kubectl version
+  when: manual
+  environment:
+    name: dev
+

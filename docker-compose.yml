@@ -1,0 +1,46 @@
+version: '3.4'
+
+services:
+  db:
+    image: postgres:10.5-alpine
+    restart: always
+    environment:
+     POSTGRES_USER: ${DB_USER}
+     POSTGRES_PASSWORD: ${DB_PASSWORD}
+     POSTGRES_DB: ${DB}
+    container_name: db-${NODE_ENV}
+    volumes:
+      - type: volume
+        source: data
+        target: /var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    ports:
+      - 5432:5432
+
+  adminer:
+    image: adminer
+    restart: always
+    container_name: adminer
+    ports:
+      - 5433:8080
+
+  auth-service:
+    depends_on:
+      - db
+    build:
+      context: .
+      dockerfile: auth-service/Dockerfile
+    image: auth-service
+    container_name: auth-service
+    environment:
+      - NODE_ENV
+    ports:
+      - "3000:3000"
+
+volumes:
+  data:
+    name: data

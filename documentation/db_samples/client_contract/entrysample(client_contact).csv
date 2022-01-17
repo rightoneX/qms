@@ -1,0 +1,6 @@
+name,profile,companyEmail,companyPhone,fax,url,country,city,address,postbox,relation,firstName,lastName,position,phone,mobile,email,carReg
+Alerton,Production Factory,web.inquiries@alerton.com,42 5 921 4900, 42 5 921 4872,www.alerton.com,USA,Lynnwood ,16201 25th Avenue W Lynnwood WA,98087,Supplier,,,,,,,
+Dwyer,Production Factory, info@dwyer-inst.com.au,61 2 4272 2055,61 2 4272 4055,www.dwyer-inst.com/,Australia,NSW 252,Unit 1  11 Waverly Drive Unanderra,359,Supplier,,,,,,,
+TSL,Production Factory,,,,www.tsl.com,New Zealand,Auckland,55 Cawley St Ellerslie,6831,Supplier,,,,,,,
+Honeywell,Production Factory,hsfpac.support@honeywell.com,64 9 623 5275,,www.honeywell.com,New Zealand,Auckland,56 Cawley St Ellerslie,6832,Supplier,,,,,,,
+TEST,BMS integrator,info@company.co.nz,64 9 1234567,64 9 123456,www.test.co.nz,New Zealand,Auckland,Albany  Auckland,1234,Staff,Boss,Bob,Director,64 9 1234567,64 21 1234567,boss@company.co.nz,

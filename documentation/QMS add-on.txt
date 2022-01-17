@@ -1,0 +1,8 @@
+15/02/2019
+	mobile app as enter the product to the stock system by bar code scanning
+		1. run app
+		2. log to system with your credantials
+		3. scan item bar code
+		4. enter items quantity
+		5. push accept button
+		

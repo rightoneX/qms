@@ -1,0 +1,15 @@
+https://github.com/scurker/currency.js
+
+Installation
+
+With npm:
+
+npm install --save currency.js
+
+With yarn:
+
+yarn add currency.js
+
+Via cdn:
+
+<script src="https://unpkg.com/currency.js@~1.2.0/dist/currency.min.js"></script>
